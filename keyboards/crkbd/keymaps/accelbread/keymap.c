@@ -45,35 +45,35 @@ enum layer_names {
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [L_COLEMAK] = LAYOUT_split_3x6_3(
-    XXXXXXX, KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,     KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, XXXXXXX,
-    XXXXXXX, HRMC_A,  HRMC_R,  HRMC_S,  HRMC_T,  KC_G,     KC_M,    HRMC_N,  HRMC_E,  HRMC_I,  HRMC_O,  XXXXXXX,
-    XXXXXXX, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,     KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, XXXXXXX,
-    /*       ,        */       XXXXXXX, TMB_0,   TMB_1,    TMB_2,   TMB_3,   XXXXXXX  /*       ,        */
+  [L_COLEMAK] = LAYOUT_split_3x5_3(
+    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN,
+    HRMC_A,  HRMC_R,  HRMC_S,  HRMC_T,  KC_G,    KC_M,    HRMC_N,  HRMC_E,  HRMC_I,  HRMC_O,
+    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH,
+    /*       */       XXXXXXX, TMB_0,   TMB_1,   TMB_2,   TMB_3,   XXXXXXX  /*       */
   ),
-  [L_QWERTY] = LAYOUT_split_3x6_3(
-    XXXXXXX, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    XXXXXXX,
-    XXXXXXX, HRMQ_A,  HRMQ_S,  HRMQ_D,  HRMQ_F,  KC_G,     KC_H,    HRMQ_J,  HRMQ_K,  HRMQ_L,  HRMQ_SN, XXXXXXX,
-    XXXXXXX, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,     KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, XXXXXXX,
-    /*       ,        */       XXXXXXX, TMB_0,   TMB_1,    TMB_2,   TMB_3,   XXXXXXX  /*       ,        */
+  [L_QWERTY] = LAYOUT_split_3x5_3(
+    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
+    HRMQ_A,  HRMQ_S,  HRMQ_D,  HRMQ_F,  KC_G,    KC_H,    HRMQ_J,  HRMQ_K,  HRMQ_L,  HRMQ_SN,
+    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,
+    /*       */       XXXXXXX, TMB_0,   TMB_1,   TMB_2,   TMB_3,   XXXXXXX  /*       */
   ),
-  [L_SYMBOLS] = LAYOUT_split_3x6_3(
-    XXXXXXX, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    XXXXXXX,
-    XXXXXXX, HRMS_GV, HRMS_LB, HRMS_RB, HRMS_MS, KC_EQUAL, KC_LEFT, HRMS_DN, HRMS_UP, HRMS_RT, HRMS_QT, XXXXXXX,
-    XXXXXXX, SW_QWTY, XXXXXXX, KC_INS,  KC_CAPS, KC_PSCR,  KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_BSLS, XXXXXXX,
-    /*       ,        */       XXXXXXX, XXXXXXX, XXXXXXX,  KC_TAB,  KC_DEL,  XXXXXXX  /*       ,        */
+  [L_SYMBOLS] = LAYOUT_split_3x5_3(
+    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
+    HRMS_GV, HRMS_LB, HRMS_RB, HRMS_MS, KC_EQL,  KC_LEFT, HRMS_DN, HRMS_UP, HRMS_RT, HRMS_QT,
+    SW_QWTY, XXXXXXX, KC_INS,  KC_CAPS, KC_PSCR, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_BSLS,
+    /*       */       XXXXXXX, XXXXXXX, XXXXXXX, KC_TAB,  KC_DEL,  XXXXXXX  /*       */
   ),
-  [L_NUMBERS] = LAYOUT_split_3x6_3(
-    XXXXXXX, XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,    KC_7,    KC_8,    KC_9,    KC_A,    KC_B,    XXXXXXX,
-    XXXXXXX, XXXXXXX, KC_F5,   KC_F6,   KC_F7,   KC_F8,    KC_4,    KC_5,    KC_6,    KC_C,    KC_D,    XXXXXXX,
-    XXXXXXX, XXXXXXX, KC_F9,   KC_F10,  KC_F11,  KC_F12,   KC_1,    KC_2,    KC_3,    KC_E,    KC_F,    XXXXXXX,
-    /*       ,        */       XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, KC_0,    XXXXXXX  /*       ,        */
+  [L_NUMBERS] = LAYOUT_split_3x5_3(
+    XXXXXXX, XXXXXXX, KC_7,    KC_8,    KC_9,    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,
+    XXXXXXX, XXXXXXX, KC_4,    KC_5,    KC_6,    KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,
+    XXXXXXX, XXXXXXX, KC_1,    KC_2,    KC_3,    KC_F11,  KC_F11,  KC_F12,  KC_F13,  KC_F14,
+    /*       */       XXXXXXX, KC_0,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX  /*       */
   ),
-  [L_MOUSE] = LAYOUT_split_3x6_3(
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, KC_BTN3, KC_BTN2, KC_BTN1, XXXXXXX,  KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    /*       ,        */       XXXXXXX, XXXXXXX, XXXXXXX,  KC_ACL0, KC_ACL1, XXXXXXX  /*       ,        */
+  [L_MOUSE] = LAYOUT_split_3x5_3(
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, XXXXXXX,
+    XXXXXXX, KC_BTN3, KC_BTN2, KC_BTN1, XXXXXXX, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    /*       */       XXXXXXX, XXXXXXX, XXXXXXX, KC_ACL0, KC_ACL1, XXXXXXX  /*       */
   )
 };
 
@@ -107,9 +107,9 @@ const rgblight_segment_t PROGMEM rgblayer_symbols[] =
 const rgblight_segment_t PROGMEM rgblayer_numbers[] =
     RGBLIGHT_LAYER_SEGMENTS(
 #ifndef RIGHT
-        {0, 0, 0, 0, 0}
-#else
         {7, 11, HS_AQUA, V_BACKLIGHT}
+#else
+        {0, 0, 0, 0, 0}
 #endif
     );
 
