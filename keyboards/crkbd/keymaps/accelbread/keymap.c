@@ -4,76 +4,60 @@ enum layer_names {
     L_COLEMAK,
     L_QWERTY,
     L_SYMBOLS,
-    L_NUMBERS,
-    L_MOUSE
+    L_FN,
 };
 
-#define HRMC_A LGUI_T(KC_A)
-#define HRMC_R LALT_T(KC_R)
-#define HRMC_S LCTL_T(KC_S)
-#define HRMC_T LSFT_T(KC_T)
-#define HRMC_N RSFT_T(KC_N)
-#define HRMC_E RCTL_T(KC_E)
-#define HRMC_I RALT_T(KC_I)
-#define HRMC_O RGUI_T(KC_O)
+#define LAYOUT_split_3x5( \
+  L00, L01, L02, L03, L04,           R00, R01, R02, R03, R04, \
+  L10, L11, L12, L13, L14,           R10, R11, R12, R13, R14, \
+  L20, L21, L22, L23, L24,           R20, R21, R22, R23, R24 \
+  ) \
+  { \
+    { KC_NO, L00, L01, L02, L03, L04 }, \
+    { KC_NO, L10, L11, L12, L13, L14 }, \
+    { KC_NO, L20, L21, L22, L23, L24 }, \
+    { KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO }, \
+    { KC_NO, R04, R03, R02, R01, R00 }, \
+    { KC_NO, R14, R13, R12, R11, R10 }, \
+    { KC_NO, R24, R23, R22, R21, R20 }, \
+    { KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO }, \
+  }
 
-#define HRMQ_A LGUI_T(KC_A)
-#define HRMQ_S LALT_T(KC_S)
-#define HRMQ_D LCTL_T(KC_D)
-#define HRMQ_F LSFT_T(KC_F)
-#define HRMQ_J RSFT_T(KC_J)
-#define HRMQ_K RCTL_T(KC_K)
-#define HRMQ_L RALT_T(KC_L)
-#define HRMQ_SN GUI_T(KC_SCLN)
+#define LS(K) LSFT_T(KC_##K)
+#define LC(K) LCTL_T(KC_##K)
+#define LA(K) LALT_T(KC_##K)
+#define LG(K) LGUI_T(KC_##K)
+#define RS(K) RSFT_T(KC_##K)
+#define RC(K) RCTL_T(KC_##K)
+#define RA(K) RALT_T(KC_##K)
+#define RG(K) RGUI_T(KC_##K)
 
-#define HRMS_GV LGUI_T(KC_GRV)
-#define HRMS_LB LALT_T(KC_LBRC)
-#define HRMS_RB LCTL_T(KC_RBRC)
-#define HRMS_MS LSFT_T(KC_MINS)
-#define HRMS_DN RSFT_T(KC_DOWN)
-#define HRMS_UP RCTL_T(KC_UP)
-#define HRMS_RT RALT_T(KC_RIGHT)
-#define HRMS_QT GUI_T(KC_QUOT)
-
-#define TMB_0 LT(L_MOUSE,KC_BSPC)
-#define TMB_1 LT(L_SYMBOLS,KC_SPC)
-#define TMB_2 LT(L_SYMBOLS,KC_ENT)
-#define TMB_3 LT(L_NUMBERS,KC_ESC)
+#define YS(K) LT(L_SYMBOLS,KC_##K)
+#define YF(K) LT(L_FN,KC_##K)
 
 #define SW_QWTY TG(L_QWERTY)
 
-
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [L_COLEMAK] = LAYOUT_split_3x5_3(
-    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN,
-    HRMC_A,  HRMC_R,  HRMC_S,  HRMC_T,  KC_G,    KC_M,    HRMC_N,  HRMC_E,  HRMC_I,  HRMC_O,
-    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH,
-    /*       */       XXXXXXX, TMB_0,   TMB_1,   TMB_2,   TMB_3,   XXXXXXX  /*       */
+  [L_COLEMAK] = LAYOUT_split_3x5(
+    KC_Q,     KC_W,     KC_F,     KC_P,     KC_B,     KC_J,     KC_L,     KC_U,     KC_Y,     KC_SCLN,
+    LA(A),    LC(R),    LS(S),    YS(T),    YF(G),    YF(M),    YS(N),    RS(E),    RC(I),    RA(O),
+    LG(Z),    KC_X,     KC_C,     KC_D,     KC_V,     KC_K,     KC_H,     KC_COMM,  KC_DOT,   RG(SLSH)
   ),
-  [L_QWERTY] = LAYOUT_split_3x5_3(
-    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
-    HRMQ_A,  HRMQ_S,  HRMQ_D,  HRMQ_F,  KC_G,    KC_H,    HRMQ_J,  HRMQ_K,  HRMQ_L,  HRMQ_SN,
-    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,
-    /*       */       XXXXXXX, TMB_0,   TMB_1,   TMB_2,   TMB_3,   XXXXXXX  /*       */
+  [L_QWERTY] = LAYOUT_split_3x5(
+    KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,
+    LA(A),    LC(S),    LS(D),    YS(F),    YF(G),    YF(H),    YS(J),    RS(K),    RC(L),    RA(SCLN),
+    LG(Z),    KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   RG(SLSH)
   ),
-  [L_SYMBOLS] = LAYOUT_split_3x5_3(
-    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
-    HRMS_GV, HRMS_LB, HRMS_RB, HRMS_MS, KC_EQL,  KC_LEFT, HRMS_DN, HRMS_UP, HRMS_RT, HRMS_QT,
-    SW_QWTY, XXXXXXX, KC_INS,  KC_CAPS, KC_PSCR, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_BSLS,
-    /*       */       XXXXXXX, XXXXXXX, XXXXXXX, KC_TAB,  KC_DEL,  XXXXXXX  /*       */
+  [L_SYMBOLS] = LAYOUT_split_3x5(
+    KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,
+    LA(TAB),  LC(ENT),  LS(BSPC), YS(SPC),  YF(ESC),  YF(LEFT), YS(DOWN), RS(UP),   RC(RGHT), RA(QUOT),
+    LG(GRV),  KC_LBRC,  KC_RBRC,  KC_MINS,  KC_EQL,   KC_HOME,  KC_PGDN,  KC_PGUP,  KC_END,   RG(BSLS)
   ),
-  [L_NUMBERS] = LAYOUT_split_3x5_3(
-    XXXXXXX, XXXXXXX, KC_7,    KC_8,    KC_9,    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,
-    XXXXXXX, XXXXXXX, KC_4,    KC_5,    KC_6,    KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,
-    XXXXXXX, XXXXXXX, KC_1,    KC_2,    KC_3,    KC_F11,  KC_F11,  KC_F12,  KC_F13,  KC_F14,
-    /*       */       XXXXXXX, KC_0,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX  /*       */
-  ),
-  [L_MOUSE] = LAYOUT_split_3x5_3(
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, XXXXXXX,
-    XXXXXXX, KC_BTN3, KC_BTN2, KC_BTN1, XXXXXXX, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    /*       */       XXXXXXX, XXXXXXX, XXXXXXX, KC_ACL0, KC_ACL1, XXXXXXX  /*       */
+  [L_FN] = LAYOUT_split_3x5(
+    KC_COMM,  KC_7,     KC_8,     KC_9,     KC_DEL,   KC_INS,   KC_F1,    KC_F2,    KC_F3,    KC_F4,
+    LA(0),    LC(4),    LS(5),    YS(6),    YF(CAPS), SW_QWTY,  YS(F5),   RS(F6),   RC(F7),   RA(F8),
+    LG(DOT),  KC_1,     KC_2,     KC_3,     KC_PSCR,  XXXXXXX,  KC_F9,    KC_F10,   KC_F11,   RG(F12)
   )
 };
 
@@ -106,11 +90,7 @@ const rgblight_segment_t PROGMEM rgblayer_symbols[] =
 
 const rgblight_segment_t PROGMEM rgblayer_numbers[] =
     RGBLIGHT_LAYER_SEGMENTS(
-#ifndef RIGHT
-        {7, 11, HS_AQUA, V_BACKLIGHT}
-#else
         {0, 0, 0, 0, 0}
-#endif
     );
 
 // Indicator leds
@@ -162,7 +142,7 @@ bool led_update_user(led_t led_state) {
 layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(RGBLAYER_QWERTY,  layer_state_cmp(state, L_QWERTY));
     rgblight_set_layer_state(RGBLAYER_SYMBOLS, layer_state_cmp(state, L_SYMBOLS));
-    rgblight_set_layer_state(RGBLAYER_NUMBERS, layer_state_cmp(state, L_NUMBERS));
+    rgblight_set_layer_state(RGBLAYER_NUMBERS, layer_state_cmp(state, L_FN));
     return state;
 }
 
